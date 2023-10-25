@@ -11,17 +11,17 @@
     <div class="container">
         <div class="perso">
             <img src="./img/wallpaper.png" alt="Image du personnage">
-            <div class="persoTotalHealth"><div class="persoHealth">100/150</div></div>
-            <div class="persoTotalMana"><div class="persoMana">150/200</div></div>
+            <div class="persoTotalHealthBar"><div class="persoHealthBar"><span id="persoHealth">100</span>/<span id="persoTotalHealth">150</span></div></div>
+            <div class="persoTotalManaBar"><div class="persoManaBar"><span id="persoMana">150</span>/<span id="persoTotalMana">200</span></div></div>
             <div>
                 <div>
-                    <p>Attaque</p>
+                    <button id="attack">Attaque</button>
                 </div>
                 <div>
-                    <p>Boule de feu</p>
+                    <button id="fireball">Boule de feu</button>
                 </div>
                 <div>
-                    <p>Soin</p>
+                    <button id="heal">Soin</button>
                 </div>
             </div>
         </div>
@@ -33,10 +33,11 @@
         <div class="ennemi">
             <img src="./img/wallpaper.png" alt="image de l'ennemi">
             <div>
-                <div class="ennemiTotalHealth"><div class="ennemiHealth">150/200</div></div>
-                <div class="ennemiTotalMana"><div class="ennemiMana">150/200</div></div>
+                <div class="ennemiTotalHealthBar"><div class="ennemiHealthBar"><span id="ennemiHealth">200</span>/<span id="ennemiTotalHealth">200</span></div></div>
+                <div class="ennemiTotalManaBar"><div class="ennemiManaBar"><span id="ennemiTotalMana">150</span>/<span id="ennemiMana">200</span></div></div>
             </div>
         </div>
     </div>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
