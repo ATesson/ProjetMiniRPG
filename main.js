@@ -5,8 +5,17 @@ let userTurn = true;
 const persoMaxHealth = document.querySelector("#persoTotalHealth").innerText;
 const persoMinHealth = 0;
 
+const persoMaxMana = document.querySelector("#persoTotalMana").innerText;
+const persoMinMana = 0;
+
+
 const ennemyMaxHealth = document.querySelector("#ennemiTotalHealth").innerText;
 const ennemyMinHealth = 0;
+
+const ennemyMaxMana = document.querySelector("#persoTotalMana").innerText;
+const ennemyMinMana = 0;
+
+
 
 const attack = document.querySelector("#attack");
 const fireball = document.querySelector("#fireball");
@@ -41,11 +50,41 @@ const healToUser = (value) => {
     persoHealthBar.style.width = `${newWidth}%`;
 }
 
-const manaSpend = (action) => {
+const persoManaSpend = (manaCost) => {
     const persoMana = document.querySelector("#persoMana");
     const persoManaBar = document.querySelector(".persoManaBar");
+
+    const currentMana = parseInt(persoMana.textContent);
+
+    if (currentMana >= manaCost) {
+        const newMana = currentMana - manaCost;
+        const newWidth = (newMana / persoMaxMana) * 100;
+
+        persoMana.textContent = newMana;
+        persoManaBar.style.width = `${newWidth}%`;
+    } 
+    else {
+        alert("Mana insuffisant");
+    }
 }
 
+const ennemyManaSpend = (manaCost) => {
+    const ennemyMana = document.querySelector("#ennemyMana");
+    const ennemyManaBar = document.querySelector(".ennemyManaBar");
+
+    const currentMana = parseInt(ennemyMana.textContent);
+
+    if (currentMana >= manaCost) {
+        const newMana = currentMana - manaCost;
+        const newWidth = (newMana / ennemyMaxMana) * 100;
+
+        ennemyMana.textContent = newMana;
+        ennemyManaBar.style.width = `${newWidth}%`;
+    } 
+    else {
+        alert("Mana insuffisant");
+    }
+}
 
 // Code exécuté
 
@@ -55,8 +94,10 @@ attack.addEventListener("click", function() {
 
 fireball.addEventListener("click", function() {
     damageToEnnemy(Math.floor(Math.random() * 21) + 10);
+    persoManaSpend(10)
 });
 
 heal.addEventListener("click", function() {
     healToUser(Math.floor(Math.random() * 11) + 10);
+    persoManaSpend(5)
 });
