@@ -1,0 +1,73 @@
+body{
+    font-family: 'Tangerine', cursive;
+    text-align: center;
+    background-image: url("/ProjetMiniRPG/img/carte5.jpg");   
+}
+
+h1 {
+    color: #333;
+    margin: 20px;
+}
+
+.fighter-container {
+    display: inline-block;
+    margin: 20px;
+    max-width:min-content;
+}
+
+.fighter {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #dc813c47;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fighter img {
+    max-width: 20em;
+}
+
+.fighter h2 {
+    font-size: 1.2em;
+}
+
+.difficulty-selection {
+    margin: 20px;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+}
+
+button {
+    background-color: #8a4822;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 20px;
+}
+
+button:hover {
+    background-color: #4c2104;
+}
+
+#difficulty {
+    display: inline-block;
+    width: auto;
+}
+
+p {
+    margin: 20px;
+}
+.radio-input{
+
+}

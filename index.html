@@ -8,23 +8,15 @@
 </head>
 <body>
     <h1>Stage 1</h1>
-    <div class="container border">
+    <div class="container">
         <div class="perso">
-            <div class="border">
-                <img src="./img/perso1.jpg" alt="Image du personnage">
-                <div class="persoTotalHealthBar"><div class="persoHealthBar"><span id="persoHealth">100</span>/<span id="persoTotalHealth">150</span></div></div>
-                <div class="persoTotalManaBar"><div class="persoManaBar"><span id="persoMana">150</span>/<span id="persoTotalMana">200</span></div></div>
-            </div>
-            <div>
-                <div>
-                    <button class="attaque" id="attack">Attaque</button>
-                </div>
-                <div>
-                    <button class="attaque" id="fireball">Boule de feu</button>
-                </div>
-                <div>
-                    <button class="attaque" id="heal">Soin</button>
-                </div>
+            <img src="./img/perso1.jpg" alt="Image du personnage">
+            <div class="persoTotalHealth"><div class="persoHealth">150/150</div></div>
+            <div class="persoTotalMana"><div class="persoMana">150/200</div></div>
+            <div class="actions">
+                <button id="attack-button">Attaque</button>
+                <button id="fireball-button">Boule de feu</button>
+                <button id="heal-button">Soin</button>
             </div>
         </div>
 
@@ -36,16 +28,14 @@
                 <h2 id="victory-message">Victoire !</h2>
                 <button id="close-modal-button">Fermer</button>
             </div>
-        </div>    
-
-        <div class="ennemi border">
+        </div>        
+        <div class="ennemi">
             <img src="./img/dragon1.jpg" alt="image de l'ennemi">
-            <div>
-                <div class="ennemiTotalHealthBar"><div class="ennemiHealthBar"><span id="ennemiHealth">200</span>/<span id="ennemiTotalHealth">200</span></div></div>
-                <div class="ennemiTotalManaBar"><div class="ennemiManaBar"><span id="ennemiTotalMana">150</span>/<span id="ennemiMana">200</span></div></div>
-            </div>
+            <div class="ennemiTotalHealth"><div class="ennemiHealth">150/200</div></div>
+            <div class="ennemiTotalMana"><div class="ennemiMana">150/200</div></div>
         </div>
     </div>
+
     <script src="main.js"></script>
 </body>
 </html>

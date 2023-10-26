@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="accueil.css">
+    <title>Sélection des Combattants</title>
+</head>
+<body>
+    <h1>Choisissez Votre Combattant</h1>
+
+    <div class="fighter-container">
+        <div class="fighter">
+            <img src="/ProjetMiniRPG/img/perso1.jpg" alt="Combattant Feu">
+            <h2>Combattant Feu</h2>
+            <p>Enveloppé dans des flammes dansantes, manie une épée incandescente. Il est l'incarnation de la fureur du feu, déchaînant des attaques ardentes et infligeant des brûlures à ses ennemis. Gardien des flammes, il est un brasier vivant, apportant la chaleur et la destruction à chaque bataille</p>
+            <input type="radio"class="radio-input" name="fighterCategory" value="feu">
+        </div>
+    </div>
+
+    <div class="fighter-container">
+        <div class="fighter">
+            <img src="/ProjetMiniRPG/img/perso3.jpg" alt="Combattant Terre">
+            <h2>Combattant Terre</h2>
+            <p>Drapé dans une armure de roche, manie une imposante hache de pierre. Il incarne la puissance de la nature, créant des séismes et résistant à toutes les attaques. Gardien des terres, il est le roc sur lequel reposent ses compagnons, un allié indestructible</p>
+            <input type="radio" class="radio-input" name="fighterCategory" value="terre">
+        </div>
+    </div>
+
+    <div class="fighter-container">
+        <div class="fighter">
+            <img src="/ProjetMiniRPG//img/perso4.jpg" alt="Combattant Eau">
+            <h2>Combattant Eau</h2>
+            <p>Emerge des profondeurs de l'océan, vêtu d'une armure composée de coquillages et d'algues chatoyantes. Armé d'un trident en corail, il maîtrise l'eau, créant des attaques fluides et protectrices. Son cœur loyal en fait le gardien des mers, prêt à défendre son royaume sous-marin, apportant la beauté et la puissance des océans à chaque bataille</p>
+            <input type="radio"class="radio-input" name="fighterCategory" value="eau">
+        </div>
+    </div>
+
+    <div class="difficulty-selection">
+        <h2>Sélectionner le Niveau de Difficulté</h2>
+        <label for="difficulty">Difficulté :</label>
+        <select id="difficulty" name="difficulty">
+            <option value="facile">Facile</option>
+            <option value="intermédiaire">Intermédiaire</option>
+            <option value="difficile">Difficile</option>
+        </select>
+    </div>
+
+    <button id="start-button" onclick="startCombat()">Commencer le Combat</button>
+
+    <p>Mise en place par Antoine, Florent et Andreea</p>
+
+    <script src="/ProjetMiniRPG/public/js/script.js"></script>
+</body>
+</html>
