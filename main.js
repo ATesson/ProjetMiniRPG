@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+// Variables
+
     const persoHealthElement = document.querySelector('.persoHealth');
     const persoManaElement = document.querySelector('.persoMana');
     const ennemiHealthElement = document.querySelector('.ennemiHealth');
@@ -19,10 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let playerTurn = true;
     let computerDifficulty = 1;
 
+    
+//Fonctions
+
     function initialization(difficulty) {
 
         const stageNumber = document.querySelector("h1");
-        stageNumber.textContent = `Stage ${computerDifficulty}`
+        stageNumber.textContent = `Stage ${computerDifficulty}`;
+
         persoHealth = 150;
         persoMana = 200;
         ennemiHealth = 100 + 10 * (difficulty - 1);
@@ -43,6 +49,16 @@ document.addEventListener('DOMContentLoaded', function() {
         playerTurn = true;
         
         addToChat("Nouveau combat ! C'est à votre tour.");
+    }
+
+    function randomPicture() {
+        const ennemiPictures = ["./img/dragon1.jpg", "./img/dragon2.jpg", "./img/goblin1.jpg", "./img/goblin2.jpg", "./img/monstre1.jpg", "./img/monstre2.jpg"]
+        const randomIndex = Math.floor(Math.random() * ennemiPictures.length);
+        const randomImage = ennemiPictures[randomIndex];
+
+        const ennemiPicture = document.querySelector(".ennemi img");
+        console.log(ennemiPicture);
+        ennemiPicture.src = randomImage;
     }
 
     function updatePersoHealth(health) {
@@ -112,6 +128,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
     function computerTurn() {
         if (ennemiHealth <= 0 || persoHealth <= 0 || playerTurn) {
             return;
@@ -131,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             persoHealth = persoHealth > 10 ? persoHealth - 10 : 0;
             addToChat("L'ennemi vous attaque pour 10 points de dégâts.");
         } else if (randomAction === 1) {
-            ennemiHealth = (ennemiHealth + 15) > ennemiMaxHealth ? 100 : ennemiHealth + 15;
+            ennemiHealth = (ennemiHealth + 15) > ennemiMaxHealth ? ennemiMaxHealth : ennemiHealth + 15;
             ennemiMana -= 10;
             addToChat("L'ennemi utilise un sort de soin pour restaurer 15 points de vie.");
         } else {
@@ -184,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (action === 'heal') {
             if (persoMana >= 10) {
                 heal = getRandomInt(10, 25); 
-                persoHealth = (persoHealth + heal) > persoMaxHealth ? 150 : persoHealth + heal;
+                persoHealth = (persoHealth + heal) > persoMaxHealth ? persoMaxHealth : persoHealth + heal;
                 persoMana -= 10;
                 addToChat(`Vous utilisez un sort de soin pour restaurer ${heal} points de vie.`);
             }
@@ -226,22 +246,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('next-modal-button').addEventListener('click', function() {
         document.getElementById('victory-modal').style.display = 'none';
+    
+        randomPicture()
+
         computerDifficulty++;
         initialization(computerDifficulty);
     });
-
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
 
     document.getElementById('replay-modal-button').addEventListener('click', function() {
         document.getElementById('victory-modal').style.display = 'none';
         initialization(computerDifficulty);
     });
 
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
+    
 
     addToChat("Le combat commence. C'est à votre tour.");
 });
