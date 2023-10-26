@@ -30,27 +30,58 @@ div {
     border: 1px solid black;
 }
 
-.persoTotalHealthBar, .ennemiTotalHealthBar {
+.persoTotalHealth, .ennemiTotalHealth {
     background-color: aliceblue;
     width: 100%;
 }
 
-.persoHealthBar, .ennemiHealthBar {
+.persoHealth, .ennemiHealth {
     background-color: red;
     height: 15px;
     width: 70%;
-    padding : 0;
-    margin: 0;
-
 }
 
-.persoTotalManaBar, .ennemiTotalManaBar {
+.persoTotalMana, .ennemiTotalMana {
     background-color: aliceblue;
     width: 100%;
 }
 
-.persoManaBar, .ennemiManaBar {
+.persoMana, .ennemiMana {
     background-color: rgb(0, 140, 255);
     height: 15px;
     width: 75%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#close-modal-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#victory-modal {
+    display: none;
 }

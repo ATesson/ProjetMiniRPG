@@ -1,103 +1,215 @@
-// Variables
+document.addEventListener('DOMContentLoaded', function() {
 
-let userTurn = true;
+    const persoHealthElement = document.querySelector('.persoHealth');
+    const persoManaElement = document.querySelector('.persoMana');
+    const ennemiHealthElement = document.querySelector('.ennemiHealth');
+    const ennemiManaElement = document.querySelector('.ennemiMana');
 
-const persoMaxHealth = document.querySelector("#persoTotalHealth").innerText;
-const persoMinHealth = 0;
+    let persoHealth = 150;
+    let persoMaxHealth = 150;
+    let persoMana = 200;
+    let persoMaxMana = 200;
 
-const persoMaxMana = document.querySelector("#persoTotalMana").innerText;
-const persoMinMana = 0;
+    let ennemiHealth = 20;
+    let ennemiMaxHealth = 200;
+    let ennemiMana = 200;
+    let ennemiMaxMana = 200;
 
+    let playerTurn = true;
+    let computerDifficulty = 1;
 
-const ennemyMaxHealth = document.querySelector("#ennemiTotalHealth").innerText;
-const ennemyMinHealth = 0;
-
-const ennemyMaxMana = document.querySelector("#persoTotalMana").innerText;
-const ennemyMinMana = 0;
-
-
-
-const attack = document.querySelector("#attack");
-const fireball = document.querySelector("#fireball");
-const heal = document.querySelector("#heal");
-
-
-// Fonctions
-
-const init = () => {
-    
-}
-
-const damageToEnnemy = (value) => {
-    const ennemiHealth = document.querySelector("#ennemiHealth");
-    const ennemiHealthBar = document.querySelector(".ennemiHealthBar");
-
-    const newHealth = parseInt(ennemiHealth.innerHTML) - value;
-    const newWidth = newHealth <= ennemyMinHealth ? 0 : (newHealth / ennemyMaxHealth) * 100;
-
-    ennemiHealth.textContent = newHealth <= ennemyMinHealth ? 0 : newHealth;
-    ennemiHealthBar.style.width = `${newWidth}%`;
-};
-
-const healToUser = (value) => {
-    const persoHealth = document.querySelector("#persoHealth");
-    const persoHealthBar = document.querySelector(".persoHealthBar");
-    
-    const newHealth = parseInt(persoHealth.innerHTML) + value;
-    const newWidth = newHealth >= persoMaxHealth ? 100 : (newHealth / persoMaxHealth) * 100;
-
-    persoHealth.textContent = newHealth >= persoMaxHealth ? persoMaxHealth : newHealth;
-    persoHealthBar.style.width = `${newWidth}%`;
-}
-
-const persoManaSpend = (manaCost) => {
-    const persoMana = document.querySelector("#persoMana");
-    const persoManaBar = document.querySelector(".persoManaBar");
-
-    const currentMana = parseInt(persoMana.textContent);
-
-    if (currentMana >= manaCost) {
-        const newMana = currentMana - manaCost;
-        const newWidth = (newMana / persoMaxMana) * 100;
-
-        persoMana.textContent = newMana;
-        persoManaBar.style.width = `${newWidth}%`;
-    } 
-    else {
-        alert("Mana insuffisant");
+    function updatePersoHealth(health) {
+        persoHealthElement.textContent = `${health}/${persoMaxHealth}`;
     }
-}
 
-const ennemyManaSpend = (manaCost) => {
-    const ennemyMana = document.querySelector("#ennemyMana");
-    const ennemyManaBar = document.querySelector(".ennemyManaBar");
-
-    const currentMana = parseInt(ennemyMana.textContent);
-
-    if (currentMana >= manaCost) {
-        const newMana = currentMana - manaCost;
-        const newWidth = (newMana / ennemyMaxMana) * 100;
-
-        ennemyMana.textContent = newMana;
-        ennemyManaBar.style.width = `${newWidth}%`;
-    } 
-    else {
-        alert("Mana insuffisant");
+    function updatePersoHealthBar(health) {
+        persoHealthElement.style.width = `${health / persoMaxHealth * 100}%`;
     }
-}
 
-// Code exécuté
+    function updatePersoMana(mana) {
+        persoManaElement.textContent = `${mana}/${persoMaxMana}`;
+    }
 
-attack.addEventListener("click", function() {
-    damageToEnnemy(Math.floor(Math.random() * 9) + 4);
-});
+    function updatePersoManaBar(mana) {
+        persoManaElement.style.width = `${mana / persoMaxMana * 100}%`;
+    }
 
-fireball.addEventListener("click", function() {
-    damageToEnnemy(Math.floor(Math.random() * 21) + 10);
-    persoManaSpend(10)
-});
+    function updateEnnemiHealth(health) {
+        ennemiHealthElement.textContent = `${health}/${ennemiMaxHealth}`;
+    }
 
-heal.addEventListener("click", function() {
-    healToUser(Math.floor(Math.random() * 11) + 10);
-    persoManaSpend(5)
+    function updateEnnemiHealthBar(health) {
+        ennemiHealthElement.style.width = `${health / ennemiMaxHealth * 100}%`;
+    }
+
+    function updateEnnemiMana(mana) {
+        ennemiManaElement.textContent = `${mana}/${ennemiMaxMana}`;
+    }
+
+    function updateEnnemiManaBar(mana) {
+        ennemiManaElement.style.width = `${mana / persoMaxMana * 100}%`;
+    }
+
+    function addToChat(message) {
+        const chatMessagesElement = document.getElementById('chat-messages');
+        const newMessageElement = document.createElement('p');
+        newMessageElement.textContent = message;
+        if (playerTurn) {
+            newMessageElement.classList.add("className");
+        }
+        else {
+            newMessageElement.classList.add("className2");
+        }
+        
+        chatMessagesElement.appendChild(newMessageElement);
+    }
+
+    function checkResult() {
+        if (ennemiHealth <= 0) {
+            document.getElementById('victory-message').textContent = 'Victoire ! Vous avez gagné !';
+            document.getElementById('victory-modal').style.display = 'block';
+            computerDifficulty++;
+            updateDifficultyLevel(computerDifficulty);
+        } else if (persoHealth <= 0) {
+            document.getElementById('victory-message').textContent = 'Défaite ! Vous avez perdu !';
+            document.getElementById('victory-modal').style.display = 'block';
+        }
+    }
+
+    function computerTurn() {
+        if (ennemiHealth <= 0 || persoHealth <= 0 || playerTurn) {
+            return;
+        }
+
+        let randomAction;
+        if (computerDifficulty === 1) {        
+            randomAction = Math.floor(Math.random() * 3);
+        } else if (computerDifficulty === 2) {        
+            randomAction = Math.floor(Math.random() * 2); 
+        } else {      
+            if (persoHealth < 50) {          
+                randomAction = 2;
+            } else {
+                randomAction = Math.floor(Math.random() * 2); 
+            }
+        }
+
+        if (randomAction === 0) {
+            persoHealth -= 10;
+            addToChat("L'ennemi vous attaque pour 10 points de dégâts.");
+        } else if (randomAction === 1) {
+            persoHealth -= 20;
+            ennemiMana -= 20;
+            addToChat("L'ennemi lance une boule de feu sur vous pour 20 points de dégâts.");
+        } else {
+            ennemiHealth += 15;
+            ennemiMana -= 10;
+            addToChat("L'ennemi utilise un sort de soin pour restaurer 15 points de vie.");
+        }
+
+        updatePersoHealth(persoHealth);
+        updatePersoHealthBar(persoHealth);
+
+        updateEnnemiHealth(ennemiHealth);
+        updateEnnemiHealthBar(ennemiHealth);
+
+        updateEnnemiMana(ennemiMana);
+        updateEnnemiManaBar(ennemiMana);
+
+        //si un ennemi peut agir sur le mana du perso, sinon à retirer
+        updatePersoMana(persoMana); 
+        updatePersoManaBar(persoMana);
+
+        checkResult();
+        playerTurn = true; 
+    }
+
+    function playerTurnAction(action) {
+        if (!playerTurn || persoHealth <= 0) {
+            return;
+        }
+
+        let damage = 0;
+        let heal = 0;
+
+        if (action === 'attack') {
+            damage = getRandomInt(5, 15); 
+            if (ennemiHealth > damage) {
+                ennemiHealth -= damage;
+            }
+            else {
+                ennemiHealth = 0;
+            }
+            
+            addToChat(`J'attaque l'ennemi pour ${damage} points de dégâts.`);
+        } else if (action === 'fireball') {
+            damage = getRandomInt(10, 25); 
+            ennemiHealth -= damage;
+            persoMana -= 20; 
+            addToChat(`Je lance une boule de feu sur l'ennemi pour ${damage} points de dégâts.`);
+        } else if (action === 'heal') {
+            heal = getRandomInt(10, 25); 
+            persoHealth += heal;
+            persoMana -= 10; 
+            addToChat(`Vous utilisez un sort de soin pour restaurer ${heal} points de vie.`);
+        }
+
+        updatePersoHealth(persoHealth);
+        updatePersoHealthBar(persoHealth);
+
+        updatePersoMana(persoMana); 
+        updatePersoManaBar(persoMana);
+
+        updateEnnemiHealth(ennemiHealth);
+        updateEnnemiHealthBar(ennemiHealth);
+        
+        //si un ennemi peut agir sur le mana du perso, sinon à retirer
+        updateEnnemiMana(ennemiMana);
+        updateEnnemiManaBar(ennemiMana);
+
+        checkResult();
+        playerTurn = false; 
+        setTimeout(computerTurn, 20);
+    }
+
+    document.getElementById('attack-button').addEventListener('click', function() {
+        playerTurnAction('attack');
+    });
+
+    document.getElementById('fireball-button').addEventListener('click', function() {
+        playerTurnAction('fireball');
+    });
+
+    document.getElementById('heal-button').addEventListener('click', function() {
+        playerTurnAction('heal');
+    });
+
+    document.getElementById('close-modal-button').addEventListener('click', function() {
+        document.getElementById('victory-modal').style.display = 'none';
+
+        persoHealth = 150;
+        persoMana = 200;
+        ennemiHealth = 200;
+        ennemiMana = 200;
+
+        updatePersoHealth(persoHealth);
+        updatePersoHealthBar(persoHealth);
+        updatePersoMana(persoMana);
+        updatePersoManaBar(persoMana);
+        updateEnnemiHealth(ennemiHealth);
+        updateEnnemiHealthBar(ennemiHealth);
+        updateEnnemiMana(ennemiMana);
+        updateEnnemiManaBar(ennemiMana);
+
+        playerTurn = true;
+        
+        addToChat("Nouveau combat ! C'est à votre tour.");
+    });
+
+    function getRandomInt(min, max) {
+       
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    addToChat("Le combat commence. C'est à votre tour.");
 });
