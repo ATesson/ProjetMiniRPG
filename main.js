@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let persoMana = 200;
     let persoMaxMana = 200;
 
-    let ennemiHealth = 20;
+    let ennemiHealth = 200;
     let ennemiMaxHealth = 200;
-    let ennemiMana = 200;
+    let ennemiMana = 20;
     let ennemiMaxMana = 200;
 
     let init = true;
@@ -52,22 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function addToChat(message) {
-        const chatMessagesElement = document.getElementById('chat-messages');
-        const newMessageElement = document.createElement('p');
-        newMessageElement.textContent = message;
-        if (init) {
-            newMessageElement.classList.add("base");
-        }
-        else {
-            if (playerTurn) {
-                newMessageElement.classList.add("player");
-            }
-            else {
-                newMessageElement.classList.add("computer");
-            }
-        }   
-        chatMessagesElement.appendChild(newMessageElement);
-        chatMessagesElement.scrollTop = chatMessagesElement.scrollHeight;
+        const chatTextArea = document.getElementById('chat-messages');
+        chatTextArea.value += message + '\n'; 
+    
+        chatTextArea.scrollTop = chatTextArea.scrollHeight;
     }
 
     function checkResult() {
@@ -86,8 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (ennemiHealth <= 0 || persoHealth <= 0 || playerTurn) {
             return;
         }
-
-        let randomAction;
+/*
         if (computerDifficulty === 1) {        
             randomAction = Math.floor(Math.random() * 3);
         } else if (computerDifficulty === 2) {        
@@ -99,18 +86,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 randomAction = Math.floor(Math.random() * 2); 
             }
         }
+*/
+        let randomAction;
+
+        if (ennemiMana >= 20) {
+            randomAction = Math.floor(Math.random() * 3);
+        } else if (ennemiMana >= 10) {
+            randomAction = Math.floor(Math.random() * 2);
+        } else {
+            randomAction = 0;
+        }
 
         if (randomAction === 0) {
-            persoHealth -= 10;
+            persoHealth = persoHealth > 10 ? persoHealth - 10 : 0;
             addToChat("L'ennemi vous attaque pour 10 points de dégâts.");
         } else if (randomAction === 1) {
-            persoHealth -= 20;
-            ennemiMana -= 20;
-            addToChat("L'ennemi lance une boule de feu sur vous pour 20 points de dégâts.");
-        } else {
-            ennemiHealth += 15;
+            ennemiHealth = (ennemiHealth + 15) > ennemiMaxHealth ? 200 : ennemiHealth + 15;
             ennemiMana -= 10;
             addToChat("L'ennemi utilise un sort de soin pour restaurer 15 points de vie.");
+        } else {
+            persoHealth = persoHealth > 20 ? persoHealth - 20 : 0;
+            ennemiMana -= 20;
+            addToChat("L'ennemi lance une boule de feu sur vous pour 20 points de dégâts.");
         }
 
         updatePersoHealth(persoHealth);
@@ -144,15 +141,27 @@ document.addEventListener('DOMContentLoaded', function() {
             ennemiHealth = ennemiHealth > damage ? ennemiHealth - damage : 0;
             addToChat(`J'attaque l'ennemi pour ${damage} points de dégâts.`);
         } else if (action === 'fireball') {
-            damage = getRandomInt(10, 25); 
-            ennemiHealth -= damage;
-            persoMana -= 20; 
-            addToChat(`Je lance une boule de feu sur l'ennemi pour ${damage} points de dégâts.`);
+            if (persoMana >= 20) {
+                damage = getRandomInt(10, 25); 
+                ennemiHealth = ennemiHealth > damage ? ennemiHealth - damage : 0;
+                persoMana -= 20;
+                addToChat(`Je lance une boule de feu sur l'ennemi pour ${damage} points de dégâts.`);
+            }
+            else {
+                addToChat("Vous n'avez pas suffisament de mana pour cette action")
+                return;
+            }
         } else if (action === 'heal') {
-            heal = getRandomInt(10, 25); 
-            persoHealth += heal;
-            persoMana -= 10; 
-            addToChat(`Vous utilisez un sort de soin pour restaurer ${heal} points de vie.`);
+            if (persoMana >= 10) {
+                heal = getRandomInt(10, 25); 
+                persoHealth = (persoHealth + heal) > persoMaxHealth ? 150 : persoHealth + heal;
+                persoMana -= 10;
+                addToChat(`Vous utilisez un sort de soin pour restaurer ${heal} points de vie.`);
+            }
+            else {
+                addToChat("Vous n'avez pas suffisament de mana pour cette action")
+                return;
+            }
         }
 
         updatePersoHealth(persoHealth);
