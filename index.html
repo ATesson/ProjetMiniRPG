@@ -10,9 +10,11 @@
     <h1>Stage 1</h1>
     <div class="container border">
         <div class="perso">
-            <img class="border" src="./img/perso1.jpg" alt="Image du personnage">
-            <div class="persoTotalHealthBar"><div class="persoHealthBar"><span id="persoHealth">100</span>/<span id="persoTotalHealth">150</span></div></div>
-            <div class="persoTotalManaBar"><div class="persoManaBar"><span id="persoMana">150</span>/<span id="persoTotalMana">200</span></div></div>
+            <div class="border">
+                <img src="./img/perso1.jpg" alt="Image du personnage">
+                <div class="persoTotalHealthBar"><div class="persoHealthBar"><span id="persoHealth">100</span>/<span id="persoTotalHealth">150</span></div></div>
+                <div class="persoTotalManaBar"><div class="persoManaBar"><span id="persoMana">150</span>/<span id="persoTotalMana">200</span></div></div>
+            </div>
             <div>
                 <div>
                     <button class="attaque" id="attack">Attaque</button>
@@ -27,8 +29,14 @@
         </div>
 
         <div class="chat">
-            
+            <div id="chat-messages"></div>
         </div>
+        <div id="victory-modal" class="modal">
+            <div class="modal-content">
+                <h2 id="victory-message">Victoire !</h2>
+                <button id="close-modal-button">Fermer</button>
+            </div>
+        </div>    
 
         <div class="ennemi border">
             <img src="./img/dragon1.jpg" alt="image de l'ennemi">
@@ -38,6 +46,6 @@
             </div>
         </div>
     </div>
-    <script type="module" src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
