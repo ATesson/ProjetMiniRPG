@@ -7,38 +7,44 @@ document.addEventListener("DOMContentLoaded", function () {
   const character = urlParams.get("character");
   const difficulty = urlParams.get("difficulty");
 
-  const persoAttackSpecial = document.getElementById ("fireball-button")
+  const specialAttackButton = document.getElementById("special-attack-button");
   const persoHealthElement = document.querySelector(".persoHealth");
   const persoManaElement = document.querySelector(".persoMana");
   const ennemiHealthElement = document.querySelector(".ennemiHealth");
   const ennemiManaElement = document.querySelector(".ennemiMana");
 
 
-
   if (character == "feu") {
     const fireFighter = new Feu("Fire_Fighter");
+
+    specialAttackButton.textContent = "Explosion de Feu";
     var persoHealth = fireFighter.sante;
     var persoMaxHealth = fireFighter.sante;
     var persoMana = fireFighter.mana;
     var persoMaxMana = fireFighter.mana;
     persoHealthElement.textContent = `${persoHealth} / ${persoMaxHealth}` ;
     persoManaElement.textContent = `${persoMana} / ${persoMaxMana}`;
+
   } else if (character == "eau") {
     const waterWarrior = new Eau ("Water_Warrior");
+    specialAttackButton.textContent = "Tsunami";
     var persoHealth = waterWarrior.sante;
     var persoMaxHealth = waterWarrior.sante;
     var persoMana = waterWarrior.mana;
     var persoMaxMana = waterWarrior.mana;
     persoHealthElement.textContent = `${persoHealth} / ${persoMaxHealth}` ;
     persoManaElement.textContent = `${persoMana} / ${persoMaxMana}`;
+
   } else if (character == "terre") {
     const earthDefender = new Terre ("Earth_Defender");
+    specialAttackButton.textContent = "Lancé de Pierre";
     var persoHealth = earthDefender.sante;
     var persoMaxHealth = earthDefender.sante;
     var persoMana = earthDefender.mana;
     var persoMaxMana = earthDefender.mana;
     persoHealthElement.textContent = `${persoHealth} / ${persoMaxHealth}` ;
     persoManaElement.textContent = `${persoMana} / ${persoMaxMana}`;
+    console.log(specialAttackButton)
   }
 
   let ennemiHealth = 100;
@@ -220,26 +226,49 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!playerTurn || persoHealth <= 0) {
       return;
     }
-
+  
     init = false;
     let damage = 0;
     let heal = 0;
-
+  
     if (action === "attack") {
       damage = getRandomInt(5, 15);
       ennemiHealth = ennemiHealth > damage ? ennemiHealth - damage : 0;
       addToChat(`J'attaque l'ennemi pour ${damage} points de dégâts.`);
-    } else if (action === "fireball") {
-      if (persoMana >= 20) {
-        damage = getRandomInt(10, 25);
-        ennemiHealth = ennemiHealth > damage ? ennemiHealth - damage : 0;
-        persoMana -= 20;
-        addToChat(
-          `Je lance une boule de feu sur l'ennemi pour ${damage} points de dégâts.`
-        );
-      } else {
-        addToChat("Vous n'avez pas suffisament de mana pour cette action");
-        return;
+    } else if (action === "specialAttack") {
+      if (character == "feu") {
+
+        if (persoMana >= 20) {
+          damage = getRandomInt(10, 25);
+          ennemiHealth = ennemiHealth > damage ? ennemiHealth - damage : 0;
+          persoMana -= 20;
+          addToChat(`Je lance une boule de feu sur l'ennemi pour ${damage} points de dégâts.`);
+        } else {
+          addToChat("Vous n'avez pas suffisamment de mana pour cette action");
+          return;
+        }
+      } else if (character == "eau") {
+
+        if (persoMana >= 20) {
+          damage = getRandomInt(10, 25);
+          ennemiHealth = ennemiHealth > damage ? ennemiHealth - damage : 0;
+          persoMana -= 20;
+          addToChat(`Je lance un tsunami sur l'ennemi pour ${damage} points de dégâts.`);
+        } else {
+          addToChat("Vous n'avez pas suffisamment de mana pour cette action");
+          return;
+        }
+      } else if (character == "terre") {
+
+        if (persoMana >= 20) {
+          damage = getRandomInt(10, 25);
+          ennemiHealth = ennemiHealth > damage ? ennemiHealth - damage : 0;
+          persoMana -= 20;
+          addToChat(`Je lance des pierres sur l'ennemi pour ${damage} points de dégâts.`);
+        } else {
+          addToChat("Vous n'avez pas suffisamment de mana pour cette action");
+          return;
+        }
       }
     } else if (action === "heal") {
       if (persoMana >= 10) {
@@ -249,32 +278,31 @@ document.addEventListener("DOMContentLoaded", function () {
             ? persoMaxHealth
             : persoHealth + heal;
         persoMana -= 10;
-        addToChat(
-          `Vous utilisez un sort de soin pour restaurer ${heal} points de vie.`
-        );
+        addToChat(`Vous utilisez un sort de soin pour restaurer ${heal} points de vie.`);
       } else {
-        addToChat("Vous n'avez pas suffisament de mana pour cette action");
+        addToChat("Vous n'avez pas suffisamment de mana pour cette action");
         return;
       }
     }
-
+  
     updatePersoHealth(persoHealth);
     updatePersoHealthBar(persoHealth);
-
+  
     updatePersoMana(persoMana);
     updatePersoManaBar(persoMana);
-
+  
     updateEnnemiHealth(ennemiHealth);
     updateEnnemiHealthBar(ennemiHealth);
-
-    //si un ennemi peut agir sur le mana du perso, sinon à retirer
+  
+    // Si un ennemi peut agir sur le mana du personnage, sinon à retirer
     updateEnnemiMana(ennemiMana);
     updateEnnemiManaBar(ennemiMana);
-
+  
     checkResult();
     playerTurn = false;
     setTimeout(computerTurn, 500);
   }
+  
 
   document
     .getElementById("attack-button")
@@ -283,9 +311,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   document
-    .getElementById("fireball-button")
+    .getElementById("special-attack-button")
     .addEventListener("click", function () {
-      playerTurnAction("fireball");
+      playerTurnAction("specialAttack");
     });
 
   document.getElementById("heal-button").addEventListener("click", function () {
