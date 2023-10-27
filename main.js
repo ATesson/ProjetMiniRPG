@@ -42,17 +42,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   let init = true;
+  let gameStart = true;
   let playerTurn = true;
   let computerDifficulty = 1;
   console.log(difficulty)
   console.log(computerDifficulty)
   
 
-  let ennemiHealth = 100 + 10 * (computerDifficulty + parseInt(difficulty) - 1);
-  let ennemiMaxHealth = 100 + 10 * (computerDifficulty + parseInt(difficulty) - 1);
-  let ennemiMana = 100 + 10 * (computerDifficulty + parseInt(difficulty) - 1);
-  let ennemiMaxMana = 100 + 10 * (computerDifficulty + parseInt(difficulty) - 1);
+  let ennemiHealth = 0;
+  let ennemiMaxHealth = 0;
+  let ennemiMana = 0;
+  let ennemiMaxMana = 0;
   
+  initialization()
 
   //Fonctions
 
@@ -61,6 +63,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const stageNumber = document.querySelector("h1");
     stageNumber.textContent = `Stage ${computerDifficulty}`;
 
+    const persoPicture = document.querySelector(".perso img");
+    if (character == "feu") {
+      persoPicture.src ="./img/perso1.jpg";
+    } else if (character == "eau") {
+      persoPicture.src ="./img/perso4.jpg";
+    } else {
+      persoPicture.src ="./img/perso3.jpg";
+    }
+    
     persoHealth = persoMaxHealth;
     persoMana = persoMaxMana;
 
@@ -81,7 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
     init = true;
     playerTurn = true;
 
-    addToChat("Nouveau combat ! C'est à votre tour.");
+    if (!gameStart) {
+      addToChat("Nouveau combat ! C'est à votre tour.");
+    }
+
+    gameStart = false;
   }
 
   function randomPicture() {
