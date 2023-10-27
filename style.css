@@ -28,14 +28,13 @@ img {
 }
 
 .chat {
+    background-color: #dc813c47;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 50%;
     border: 1px solid #333;
     height: 27vw;
     overflow: hidden;
     overflow-y: scroll;
-    border-radius: 5px;
-    background-color: #dc813c47;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* div{
@@ -140,4 +139,15 @@ img {
     margin-left: 12em;
     border-radius: 10px;
     padding: 10px 0;
+}
+
+#selected-difficulty {
+    background-color: bisque;
+    border: 1px solid #333;
+    border-radius: 5px;
+    text-align: center;
+    width: fit-content;
+    padding: 5px 50px;
+    margin: 0 auto 20px;
+    font-weight: bold;
 }
