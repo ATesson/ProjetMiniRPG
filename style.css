@@ -29,6 +29,10 @@ img {
 
 .chat {
     width: 50%;
+    border: 1px solid black;
+    height: 27vw;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 /* div{
@@ -39,36 +43,36 @@ img {
     border: 1px solid black;
 }
 
-.persoTotalHealthBar, .ennemiTotalHealthBar {
+.persoTotalHealth, .ennemiTotalHealth {
     background-color: aliceblue;
     width: 100%;
     border-top: 1px solid black;
 }
 
-.persoHealthBar, .ennemiHealthBar {
+.persoHealth, .ennemiHealth {
     background-color: red;
     height: 15px;
-    width: 70%;
+    width: 100%;
     padding : 0;
     margin: 0;
 }
 
-.persoTotalManaBar, .ennemiTotalManaBar {
+.persoTotalMana, .ennemiTotalMana {
     background-color: aliceblue;
     width: 100%;
     border-top: 1px solid black;
 }
 
-.persoManaBar, .ennemiManaBar {
+.persoMana, .ennemiMana {
     background-color: rgb(0, 140, 255);
     height: 15px;
-    width: 75%;
+    width: 100%;
 }
 
 .attaque{
     width: 100%;
     margin-top: 5px;
-    height: auto;
+    height: 30px;
 }
 
 .modal {
@@ -93,7 +97,7 @@ img {
     border-radius: 5px;
 }
 
-#close-modal-button {
+#replay-modal-button, #next-modal-button {
     background-color: #007BFF;
     color: white;
     padding: 10px 20px;
@@ -103,4 +107,34 @@ img {
 }
 #victory-modal {
     display: none;
+}
+
+.player{
+    width: 60%;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #D5C066;
+    margin-left: 1em;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.computer{
+    width: 60%;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #d1cbb2;
+    margin-left: 22em;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.base{
+    width: 60%;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #ca782c;
+    margin-left: 12em;
+    border-radius: 10px;
+    padding: 10px 0;
 }
