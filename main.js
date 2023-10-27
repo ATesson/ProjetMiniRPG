@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         init = true;
         playerTurn = true;
-        
+
+        removeFromChat();
         addToChat("Nouveau combat ! C'est à votre tour.");
     }
 
@@ -109,6 +110,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }   
         chatMessagesElement.appendChild(newMessageElement);
+
+        newMessageElement.scrollIntoView();
+    }
+
+    function removeFromChat() {
+        const chatMessagesElement = document.getElementById('chat-messages');
+        const chatMessages = chatMessagesElement.querySelectorAll("p");
+    
+        chatMessages.forEach(message => {
+            chatMessagesElement.removeChild(message);
+        });
     }
 
     function checkResult() {

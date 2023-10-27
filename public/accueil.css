@@ -1,0 +1,108 @@
+body{
+    font-family: 'Tangerine', cursive;
+    text-align: center;
+    background-color: burlywood;
+}
+
+h1 {
+    color: #333;
+    margin: 20px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: bisque;
+}
+
+.bodyContainer {
+    background-image: url("../img/carte5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #333;
+}
+
+.fighter-container {
+    display: flex;
+    justify-content: center;
+}
+
+.fighter {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #dc813c47;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 800px;
+    display: inline-block;
+    margin: 20px;
+    width: 25%;
+}
+
+.fighter img {
+    max-width: 20em;
+}
+
+.fighter h2 {
+    font-size: 1.2em;
+}
+
+.difficulty-selection {
+    margin: 20px;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+}
+
+button {
+    background-color: #8a4822;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 20px;
+}
+
+button:hover {
+    background-color: #4c2104;
+}
+
+#difficulty {
+    display: inline-block;
+    width: auto;
+}
+
+p {
+    margin: 20px;
+}
+
+/* Cacher le bouton radio par défaut */
+input[type="radio"] {
+    display: none;
+}
+
+/* Styles du bouton */
+.radio-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    border: 1px solid #007bff; /* Bordure du bouton */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+}
+
+/* Style lorsque le bouton radio est coché */
+input[type="radio"]:checked + .radio-button {
+    background-color: #00cc66; /* Couleur de fond lorsque coché */
+    border: 1px solid #00cc66; /* Bordure lorsque coché */
+}

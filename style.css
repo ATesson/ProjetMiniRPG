@@ -5,7 +5,7 @@ body{
 
 h1 {
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid #333;
     background-color: bisque;
 }
 
@@ -29,10 +29,13 @@ img {
 
 .chat {
     width: 50%;
-    border: 1px solid black;
+    border: 1px solid #333;
     height: 27vw;
     overflow: hidden;
     overflow-y: scroll;
+    border-radius: 5px;
+    background-color: #dc813c47;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* div{
@@ -40,13 +43,13 @@ img {
 } */
 
 .border {
-    border: 1px solid black;
+    border: 1px solid #333;
 }
 
 .persoTotalHealth, .ennemiTotalHealth {
     background-color: aliceblue;
     width: 100%;
-    border-top: 1px solid black;
+    border-top: 1px solid #333;
 }
 
 .persoHealth, .ennemiHealth {
@@ -60,7 +63,7 @@ img {
 .persoTotalMana, .ennemiTotalMana {
     background-color: aliceblue;
     width: 100%;
-    border-top: 1px solid black;
+    border-top: 1px solid #333;
 }
 
 .persoMana, .ennemiMana {
@@ -112,7 +115,7 @@ img {
 .player{
     width: 60%;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid #333;
     background-color: #D5C066;
     margin-left: 1em;
     border-radius: 10px;
@@ -122,7 +125,7 @@ img {
 .computer{
     width: 60%;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid #333;
     background-color: #d1cbb2;
     margin-left: 22em;
     border-radius: 10px;
@@ -132,7 +135,7 @@ img {
 .base{
     width: 60%;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid #333;
     background-color: #ca782c;
     margin-left: 12em;
     border-radius: 10px;
