@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniRPG</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="difficulty-selected">
+        <h1>Niveau de Difficulté :</h1>
+        <p id="selected-difficulty">Facile</p>
+    </div>
+    
+    <div class="container border">
+        <div class="perso">
+            <div class="border">
+                <img src="./img/perso1.jpg" alt="Image du personnage">
+                <div class="persoTotalHealth"><div class="persoHealth">150/150</div></div>
+                <div class="persoTotalMana"><div class="persoMana">200/200</div></div>
+            </div>
+            <div class="actions">
+                <button class="attaque" id="attack-button">Attaque</button>
+                <button class="attaque" id="special-attack-button">Attaque Spéciale</button>
+                <button class="attaque" id="heal-button">Soin</button>
+            </div>
+        </div>
+
+        <div class="chat">
+            <div id="chat-messages"></div>
+        </div>
+        <div id="victory-modal" class="modal">
+            <div class="modal-content">
+                <h2 id="victory-message">Victoire !</h2>
+                <button id="replay-modal-button">Rejouer</button>
+                <button id="next-modal-button">Niveau suivant</button>
+            </div>
+        </div>        
+        <div class="ennemi border">
+            <img src="../../img/dragon1.jpg" alt="image de l'ennemi">
+            <div class="ennemiTotalHealth"><div class="ennemiHealth">100/100</div></div>
+            <div class="ennemiTotalMana"><div class="ennemiMana">100/100</div></div>
+        </div>
+    </div>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
