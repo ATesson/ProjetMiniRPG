@@ -1,29 +1,45 @@
 body{
     font-family: 'Tangerine', cursive;
     text-align: center;
-    background-image: url("/ProjetMiniRPG/img/carte5.jpg");   
+    background-color: burlywood;
 }
 
 h1 {
     color: #333;
-    margin: 20px;
+    margin: 20px 0;
+    text-align: center;
+    border: 1px solid black;
+    background-color: bisque;
+    padding: 5px;
+}
+
+.bodyContainer {
+    background-image: url("../img/carte5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #333;
 }
 
 .fighter-container {
-    display: inline-block;
-    margin: 20px;
-    max-width:min-content;
+    display: flex;
+    justify-content: center;
 }
 
 .fighter {
-    border: 1px solid #ccc;
-    padding: 20px;
+    border: 1px solid #333;
+    padding: 20px 0;
     background-color: #dc813c47;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    width: 25%;
 }
 
 .fighter img {
-    max-width: 20em;
+    max-width: 90%;
 }
 
 .fighter h2 {
@@ -31,18 +47,24 @@ h1 {
 }
 
 .difficulty-selection {
-    margin: 20px;
+    margin-bottom: 20px;
     padding: 20px;
+    width: 25%;
 }
 
 label {
     display: block;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 select {
     width: 100%;
     padding: 10px;
+    background-color: #8a4822;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
 }
 
 button {
@@ -53,6 +75,7 @@ button {
     border-radius: 4px;
     font-size: 1.2em;
     cursor: pointer;
+    width: 25%;
     margin: 20px;
 }
 
@@ -68,6 +91,38 @@ button:hover {
 p {
     margin: 20px;
 }
-.radio-input{
 
+input[type="radio"] {
+    display: none;
+}
+
+.radio-button {
+    margin-top: auto;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8a4822;
+    border: 1px solid transparent;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+}
+
+input[type="radio"]:checked + .radio-button{
+    background-color: #4c2104;
+    border: 1px solid #333;
+}
+
+.second-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authors {
+    width: 25%;
+    background-color: bisque;
+    border: 1px solid #333;
+    border-radius: 5px;
 }

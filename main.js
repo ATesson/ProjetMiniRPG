@@ -6,27 +6,40 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const character = urlParams.get("character");
   const difficulty = urlParams.get("difficulty");
+
+  const persoAttackSpecial = document.getElementById ("fireball-button")
   const persoHealthElement = document.querySelector(".persoHealth");
   const persoManaElement = document.querySelector(".persoMana");
   const ennemiHealthElement = document.querySelector(".ennemiHealth");
   const ennemiManaElement = document.querySelector(".ennemiMana");
 
- function createCharacter(characterChoice) { 
-    let selectedCharacter;
-    
+
+
   if (character == "feu") {
     const fireFighter = new Feu("Fire_Fighter");
     var persoHealth = fireFighter.sante;
     var persoMaxHealth = fireFighter.sante;
     var persoMana = fireFighter.mana;
     var persoMaxMana = fireFighter.mana;
-    persoHealthElement.textContent = `${persoHealth} / ${persoMaxHealth}` 
-    persoManaElement.textContent = persoMana
-    console.log(fireFighter)
+    persoHealthElement.textContent = `${persoHealth} / ${persoMaxHealth}` ;
+    persoManaElement.textContent = `${persoMana} / ${persoMaxMana}`;
   } else if (character == "eau") {
-    console.log("Eau");
+    const waterWarrior = new Eau ("Water_Warrior");
+    var persoHealth = waterWarrior.sante;
+    var persoMaxHealth = waterWarrior.sante;
+    var persoMana = waterWarrior.mana;
+    var persoMaxMana = waterWarrior.mana;
+    persoHealthElement.textContent = `${persoHealth} / ${persoMaxHealth}` ;
+    persoManaElement.textContent = `${persoMana} / ${persoMaxMana}`;
+  } else if (character == "terre") {
+    const earthDefender = new Terre ("Earth_Defender");
+    var persoHealth = earthDefender.sante;
+    var persoMaxHealth = earthDefender.sante;
+    var persoMana = earthDefender.mana;
+    var persoMaxMana = earthDefender.mana;
+    persoHealthElement.textContent = `${persoHealth} / ${persoMaxHealth}` ;
+    persoManaElement.textContent = `${persoMana} / ${persoMaxMana}`;
   }
-} 
 
   let ennemiHealth = 100;
   let ennemiMaxHealth = 100;

@@ -33,14 +33,14 @@ class Personnage {
   
   export class Eau extends Personnage {
     constructor(nom) {
-      super(nom, 220, 180, 1, "Vague Géante");
+      super(nom, 220, 180, 1, "Tsunami");
     }
   
   }
   
   export class Terre extends Personnage {
     constructor(nom) {
-      super(nom, 200, 200, 1, "Mur de Pierres");
+      super(nom, 150, 150, 1, "Lancé de Pierres");
     }
   
   }
