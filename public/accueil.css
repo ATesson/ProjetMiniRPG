@@ -6,10 +6,11 @@ body{
 
 h1 {
     color: #333;
-    margin: 20px;
+    margin: 20px 0;
     text-align: center;
     border: 1px solid black;
     background-color: bisque;
+    padding: 5px;
 }
 
 .bodyContainer {
@@ -26,18 +27,19 @@ h1 {
 }
 
 .fighter {
-    border: 1px solid #ccc;
-    padding: 20px;
+    border: 1px solid #333;
+    padding: 20px 0;
     background-color: #dc813c47;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 800px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 20px;
     width: 25%;
 }
 
 .fighter img {
-    max-width: 20em;
+    max-width: 90%;
 }
 
 .fighter h2 {
@@ -45,18 +47,24 @@ h1 {
 }
 
 .difficulty-selection {
-    margin: 20px;
+    margin-bottom: 20px;
     padding: 20px;
+    width: 25%;
 }
 
 label {
     display: block;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 select {
     width: 100%;
     padding: 10px;
+    background-color: #8a4822;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
 }
 
 button {
@@ -67,6 +75,7 @@ button {
     border-radius: 4px;
     font-size: 1.2em;
     cursor: pointer;
+    width: 25%;
     margin: 20px;
 }
 
@@ -83,26 +92,37 @@ p {
     margin: 20px;
 }
 
-/* Cacher le bouton radio par défaut */
 input[type="radio"] {
     display: none;
 }
 
-/* Styles du bouton */
 .radio-button {
+    margin-top: auto;
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff; /* Couleur de fond du bouton */
-    color: #fff; /* Couleur du texte */
-    border: 1px solid #007bff; /* Bordure du bouton */
-    border-radius: 4px; /* Coins arrondis */
+    background-color: #8a4822;
+    border: 1px solid transparent;
+    color: #fff;
+    border-radius: 5px;
     cursor: pointer;
     user-select: none;
     text-align: center;
 }
 
-/* Style lorsque le bouton radio est coché */
 input[type="radio"]:checked + .radio-button{
-    background-color: #00cc66; /* Couleur de fond lorsque coché */
-    border: 1px solid #00cc66; /* Bordure lorsque coché */
+    background-color: #4c2104;
+    border: 1px solid #333;
+}
+
+.second-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authors {
+    width: 25%;
+    background-color: bisque;
+    border: 1px solid #333;
+    border-radius: 5px;
 }
