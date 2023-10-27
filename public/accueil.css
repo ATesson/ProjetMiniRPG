@@ -102,7 +102,7 @@ input[type="radio"] {
 }
 
 /* Style lorsque le bouton radio est coché */
-input[type="radio"]:checked + .radio-button {
+input[type="radio"]:checked + .radio-button{
     background-color: #00cc66; /* Couleur de fond lorsque coché */
     border: 1px solid #00cc66; /* Bordure lorsque coché */
 }
