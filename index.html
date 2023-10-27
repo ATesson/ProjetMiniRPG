@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="accueil.css">
+    <title>Sélection des Combattants</title>
+</head>
+<body>
+    <h1>Choisissez Votre Combattant</h1>
+    <div class="bodyContainer border">
+        <div class="fighter-container">
+            <div class="fighter">
+                <img src="./img/perso1.jpg" alt="Combattant Feu">
+                <h2>Combattant Feu</h2>
+                <p>Enveloppé dans des flammes dansantes, manie une épée incandescente. Il est l'incarnation de la fureur du feu, déchaînant des attaques ardentes et infligeant des brûlures à ses ennemis. Gardien des flammes, il est un brasier vivant, apportant la chaleur et la destruction à chaque bataille</p>
+                <input type="radio"class="radio-input" name="fighterCategory" id="fireButton" value="feu">
+                <label for="fireButton" class="radio-button">Sélectionner</label>
+            </div>
+
+            <div class="fighter">
+                <img src="./img/perso3.jpg" alt="Combattant Terre">
+                <h2>Combattant Terre</h2>
+                <p>Drapé dans une armure de roche, manie une imposante hache de pierre. Il incarne la puissance de la nature, créant des séismes et résistant à toutes les attaques. Gardien des terres, il est le roc sur lequel reposent ses compagnons, un allié indestructible</p>
+                <input type="radio" class="radio-input" name="fighterCategory" id="hearthButton"value="terre">
+                <label for="hearthButton" class="radio-button">Sélectionner</label>
+            </div>
+
+            <div class="fighter">
+                <img src="./img/perso4.jpg" alt="Combattant Eau">
+                <h2>Combattant Eau</h2>
+                <p>Emerge des profondeurs de l'océan, vêtu d'une armure composée de coquillages et d'algues chatoyantes. Armé d'un trident en corail, il maîtrise l'eau, créant des attaques fluides et protectrices. Son cœur loyal en fait le gardien des mers, prêt à défendre son royaume sous-marin, apportant la beauté et la puissance des océans à chaque bataille</p>
+                <input type="radio"class="radio-input" name="fighterCategory" id="waterButton"value="eau">
+                <label for="waterButton" class="radio-button">Sélectionner</label>
+            </div>
+        </div>
+
+        <div class="second-container">
+            <div class="difficulty-selection">
+                <label for="difficulty">Difficulté :</label>
+                <select id="difficulty" name="difficulty">
+                    <option value="0">Facile</option>
+                    <option value="3">Intermédiaire</option>
+                    <option value="6">Difficile</option>
+                </select>
+            </div>
+
+            <button id="start-button" onclick="startCombat()">Commencer le Combat</button>
+            
+            <p class="authors">Mise en place par <br> Antoine, Florent et Andreea</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
